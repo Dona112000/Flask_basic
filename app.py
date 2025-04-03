@@ -1,6 +1,16 @@
-from flask import Flask #from flask module i have imported Flask class
+from flask import Flask ,render_template #from flask module i have imported Flask class
 #creating an object app
 app = Flask(__name__) #creating an object(app) of Flask class and passing __name__ as argument
+
+#adding htmlfile
+@app.route('/html') 
+def html_fn():
+    return render_template('index.html')
+
+#adding dynamic url to html page
+@app.route('/dynamic/<name>') 
+def dynamic(name):
+    return render_template('dynamic.html' , name=name) #first name is passing in dynamic.html
 
 
 @app.route("/")
